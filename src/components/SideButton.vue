@@ -1,5 +1,5 @@
 <template>
-  <button>
+  <button @click="$router.push({path: `${name}`})">
     <base-icon :name="name" class="side-icon"/>
     <span>{{ title }}</span>
   </button>

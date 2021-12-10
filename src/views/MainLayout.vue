@@ -1,12 +1,10 @@
 <template>
-  <div>
-    123321123321123321
-  </div>
+  <router-view></router-view>
 </template>
 
 <script>
 export default {
-  name: "TheSerachComponent"
+  name: "MainLayout"
 }
 </script>
 

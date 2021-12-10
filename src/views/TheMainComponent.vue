@@ -1,32 +1,24 @@
 <template>
   <div class="background">
-    <div class="control-buttons">
-      <button>
-        <BaseIcon class="arrow-icon" name="arrowLeft"/>
-      </button>
-      <button disabled>
-        <BaseIcon class="arrow-icon disabled" name="arrowRight"/>
-      </button>
-    </div>
-    <div>
-      <div class="current-greetings">
-        {{ greeting }}
-      </div>
-      <div id="last-playlists">
-        <BasePlaylist v-for="(playlist, index) in playlists" :key="index" :playlist="playlist"/>
-      </div>
+    <the-header/>
+    <span class="current-greetings">
+      {{ greeting }}
+    </span>
+    <div id="last-playlists">
+      <BasePlaylist v-for="(playlist, index) in playlists" :key="index" :playlist="playlist"/>
     </div>
   </div>
+
 </template>
 
 <script>
-import BaseIcon from './BaseIcon.vue';
-import BasePlaylist from './BasePlaylist.vue';
+import BasePlaylist from '../components/BasePlaylist.vue';
+import TheHeader from '../components/TheHeader';
 
 export default {
   name: 'TheMainComponent',
   components: {
-    BaseIcon,
+    TheHeader,
     BasePlaylist
   },
   data() {
@@ -47,7 +39,7 @@ export default {
     greeting() {
       let date = new Date;
       let hour = date.getHours();
-      return(hour < 3) ? 'Доброй ночи' :
+      return (hour < 4) ? 'Доброй ночи' :
           (hour < 12) ? 'Доброе утро' :
               (hour < 16) ? 'Добрый день' :
                   (hour < 22) ? 'Добрый вечер' :
@@ -66,35 +58,13 @@ export default {
   background: linear-gradient(#20125d 0%, #121212 35%);
 }
 
-.control-buttons {
-  display: grid;
-  grid-template-columns: 25px 25px;
-  gap: 20px;
-  padding-top: 15px;
-  padding-left: 30px;
-}
-
-.arrow-icon {
-  width: 22px;
-  height: 22px;
-  padding: 5px;
-  color: #fff;
-  background: #000;
-  border-radius: 50%;
-}
-
-.disabled {
-  color: #a1a1a1;
-  background: #151515;
-  cursor: not-allowed;
-}
-
 .current-greetings {
   font-size: 28px;
   font-weight: bold;
   color: #fff;
-  padding-top: 45px;
-  padding-left: 30px;
+  margin-top: 45px;
+  margin-left: 30px;
+  margin-right: auto;
 }
 
 #last-playlists {
@@ -103,7 +73,7 @@ export default {
   grid-template-rows: 80px 80px;
   gap: 20px;
 
-  padding-top: 25px;
-  padding-left: 30px;
+  margin-top: 25px;
+  margin-left: 30px;
 }
 </style>
