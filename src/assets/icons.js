@@ -4,5 +4,5 @@ export default {
     myMedia: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />',
     arrowLeft: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>',
     arrowRight: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>',
-    playlistPlay: '<g id="Group 1"><circle id="Ellipse 1" cx="100" cy="100" r="100" fill="#1bb953"/><path id="Polygon 1" d="M145 100L77.5 138.971L77.5 61.0289L145 100Z" fill="white"/></g>',
+    playlistPlay: '<g id="Group 1"><circle id="Ellipse 1" cx="20" cy="20" r="20" fill="#1BB953"/><path id="Polygon 1" d="M28 20L16 26.9282L16 13.0718L28 20Z" fill="white"/></g>',
 }

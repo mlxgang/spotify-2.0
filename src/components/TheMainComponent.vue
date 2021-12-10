@@ -10,10 +10,10 @@
     </div>
     <div>
       <div class="current-greetings">
-        Добрый вечер
+        {{ greeting }}
       </div>
       <div id="last-playlists">
-        <BasePlaylist />
+        <BasePlaylist v-for="(playlist, index) in playlists" :key="index" :playlist="playlist"/>
       </div>
     </div>
   </div>
@@ -28,6 +28,31 @@ export default {
   components: {
     BaseIcon,
     BasePlaylist
+  },
+  data() {
+    return {
+      playlists: [
+        {name: 'Микс дня #1'},
+        {name: 'Микс дня #2'},
+        {name: 'Микс дня #3'},
+        {name: 'Микс дня #4'},
+        {name: 'Liked Songs'},
+        {name: 'Топ-50 (Россия)'},
+        {name: 'Bandana 1'},
+        {name: 'Микс дня #5'},
+      ]
+    }
+  },
+  computed: {
+    greeting() {
+      let date = new Date;
+      let hour = date.getHours();
+      return(hour < 3) ? 'Доброй ночи' :
+          (hour < 12) ? 'Доброе утро' :
+              (hour < 16) ? 'Добрый день' :
+                  (hour < 22) ? 'Добрый вечер' :
+                      (hour < 24) ? 'Доброй ночи' : 'ау?'
+    }
   }
 }
 </script>
