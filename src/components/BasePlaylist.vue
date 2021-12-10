@@ -6,10 +6,10 @@
     </span>
     <button>
       <!--      <BaseIcon class="playlist-play-icon" name="playlistPlay" />-->
-      <svg fill="none" height="40" viewBox="0 0 200 200" width="40" xmlns="http://www.w3.org/2000/svg">
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g id="Group 1">
-          <circle id="Ellipse 1" cx="100" cy="100" fill="#1bb953" r="100"/>
-          <path id="Polygon 1" d="M145 100L77.5 138.971L77.5 61.0289L145 100Z" fill="white"/>
+          <circle id="Ellipse 1" cx="20" cy="20" r="20" fill="#1BB953"/>
+          <path id="Polygon 1" d="M28 20L16 26.9282L16 13.0718L28 20Z" fill="white"/>
         </g>
       </svg>
     </button>
