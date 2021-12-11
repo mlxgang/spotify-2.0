@@ -1,8 +1,8 @@
 <template>
-  <button @click="$router.push({path: `${name}`})">
+  <router-link :to="`/${name}`" active-class="active" class="side-menu-button">
     <base-icon :name="name" class="side-icon"/>
     <span>{{ title }}</span>
-  </button>
+  </router-link>
 </template>
 
 <script>
@@ -18,6 +18,27 @@ export default {
 </script>
 
 <style scoped>
+.side-menu-button {
+  height: 40px;
+  width: 220px;
+  display: flex;
+  align-items: center;
+  color: #b3b3b3;
+  transition: color .3s;
+  text-decoration: none;
+}
+
+.side-menu-button:hover {
+  color: #f5f5f5;
+  transition: color .3s;
+}
+
+.active {
+  background-color: #292929;
+  color: #f5f5f5;
+  border-radius: 5px;
+  text-decoration: none;
+}
 .side-icon {
   height: 25px;
   width: 25px;

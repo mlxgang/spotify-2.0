@@ -1,36 +1,38 @@
 <template>
   <div id="side-menu">
-    <side-button
-        v-for="(item, index) in sideButtons"
-        :key="index"
-        :class="['side-menu-button', { active: currentTab === item }]"
-        :name="item.name"
-        :title="item.title"
-        @click="$emit('changeCurrentTab', index)"
-    />
+    <router-link to="/main" class="side-menu-button" active-class="active">
+        <base-icon name="main" class="side-icon"/>
+        <span>Главная</span>
+    </router-link>
+    <router-link to="/search" class="side-menu-button" active-class="active">
+        <base-icon name="search" class="side-icon"/>
+        <span>Поиск</span>
+    </router-link>
+    <router-link to="/my-media" class="side-menu-button" active-class="active">
+        <base-icon name="my-media" class="side-icon"/>
+        <span>Моя медиатека</span>
+    </router-link>
   </div>
 </template>
 
 <script>
-import SideButton from './SideButton.vue'
+import BaseIcon from "./BaseIcon";
 
 export default {
   name: 'TheSideMenu',
   components: {
-    SideButton
+    BaseIcon,
   },
   data() {
     return {}
   },
-  emits: ['changeCurrentTab'],
-  props: ['sideButtons', 'currentTab']
 }
 </script>
 
 <style scoped>
 #side-menu {
   width: auto;
-  height: 1000px;
+  height: 938px;
   background-color: #030303;
   padding: 50px 12px 12px;
 }
@@ -42,6 +44,7 @@ export default {
   align-items: center;
   color: #b3b3b3;
   transition: color .3s;
+  text-decoration: none;
 }
 
 .side-menu-button:hover {
@@ -52,6 +55,13 @@ export default {
 .active {
   background-color: #292929;
   color: #f5f5f5;
-  border-radius: 5px
+  border-radius: 5px;
+  text-decoration: none;
+}
+.side-icon {
+  height: 25px;
+  width: 25px;
+  margin: 0 15px;
+  color: inherit;
 }
 </style>

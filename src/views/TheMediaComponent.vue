@@ -2,16 +2,21 @@
   <div class="background">
     <the-header>
       <div class="button-box">
-        <button
-            v-for="(tab, index) in tabs"
-            :key="index"
-            :class="['button-media-tab', { active: currentTab === tab }]"
-            @click="changeCurrentTab(index)"
-        >
-          {{ tab.name }}
-        </button>
+        <router-link to="/my-media/playlists" class="button-media-tab" active-class="active">
+          <span>Плейлисты</span>
+        </router-link>
+        <router-link to="/my-media/podcasts" class="button-media-tab" active-class="active">
+          <span>Подкасты</span>
+        </router-link>
+        <router-link to="/my-media/songwriters" class="button-media-tab" active-class="active">
+          <span>Исполнители</span>
+        </router-link>
+        <router-link to="/my-media/albums" class="button-media-tab" active-class="active">
+          <span>Альбомы</span>
+        </router-link>
       </div>
     </the-header>
+    <router-view/>
   </div>
 </template>
 
@@ -36,11 +41,7 @@ export default {
       currentTab: tabs[0]
     }
   },
-  methods: {
-    changeCurrentTab(index) {
-      this.currentTab = tabs[index]
-    }
-  }
+  methods: {}
 }
 </script>
 
@@ -54,6 +55,7 @@ export default {
 }
 
 .button-box {
+  margin-top: 10px;
   margin-left: 14px;
 }
 
@@ -65,6 +67,7 @@ export default {
   border-radius: 3px;
   color: #b3b3b3;
   transition: color .3s;
+  text-decoration: none;
 }
 
 .button-media-tab:hover {
