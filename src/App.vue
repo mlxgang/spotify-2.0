@@ -2,17 +2,12 @@
   <div style="display: flex">
     <the-side-menu :currentTab="currentTab" :sideButtons="sideButtons" @changeCurrentTab="changeCurrentTab"/>
     <main-layout/>
-<!--      <component :is="currentTab.component"/>-->
   </div>
 </template>
 
 <script>
 import TheSideMenu from './components/TheSideMenu.vue'
 import MainLayout from "./views/MainLayout";
-// import TheMainComponent from './components/TheMainComponent.vue'
-// import TheSearchComponent from './components/TheSearchComponent.vue'
-// import TheMediaComponent from './components/TheMediaComponent.vue'
-
 const sideButtons = [
   {title: 'Главная', name: 'main', component: 'TheMainComponent'},
   {title: 'Поиск', name: 'search', component: 'TheSearchComponent'},
@@ -24,9 +19,6 @@ export default {
   components: {
     MainLayout,
     TheSideMenu,
-    // TheMainComponent,
-    // TheSearchComponent,
-    // TheMediaComponent,
   },
   data() {
     return {

@@ -1,10 +1,10 @@
 <template>
   <div class="control-buttons">
-    <button>
+    <button @click="$router.go(-1)">
       <BaseIcon class="arrow-icon" name="arrowLeft"/>
     </button>
-    <button disabled>
-      <BaseIcon class="arrow-icon disabled" name="arrowRight"/>
+    <button @click="$router.go(1)">
+      <BaseIcon class="arrow-icon" name="arrowRight"/>
     </button>
     <div>
       <slot/>
