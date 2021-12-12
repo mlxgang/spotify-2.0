@@ -1,5 +1,10 @@
 # spotify
 
+#Hello everyone
+```
+This is my project where I learn Vue.js and API
+```
+
 ## Project setup
 ```
 yarn install

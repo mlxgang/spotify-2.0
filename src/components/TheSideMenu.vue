@@ -32,7 +32,7 @@ export default {
 <style scoped>
 #side-menu {
   width: auto;
-  height: 938px;
+  height: 908px;
   background-color: #030303;
   padding: 50px 12px 12px;
 }

@@ -54,13 +54,12 @@ export default {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 1000px;
+  height: 970px;
   background: linear-gradient(#20125d 0%, #121212 35%);
 }
 
 .current-greetings {
   font-size: 28px;
-  font-weight: bold;
   color: #fff;
   margin-top: 45px;
   margin-left: 30px;
