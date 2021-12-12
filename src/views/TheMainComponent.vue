@@ -5,7 +5,10 @@
       {{ greeting }}
     </span>
     <div id="last-playlists">
-      <BasePlaylist v-for="(playlist, index) in playlists" :key="index" :playlist="playlist"/>
+      <base-playlist :playlist="{name: 'Любимые песни'}">
+        <img src="../assets/liked-songs.png">
+      </base-playlist>
+      <base-playlist v-for="(playlist, index) in playlists" :key="index" :playlist="playlist"/>
     </div>
   </div>
 
@@ -28,10 +31,9 @@ export default {
         {name: 'Микс дня #2'},
         {name: 'Микс дня #3'},
         {name: 'Микс дня #4'},
-        {name: 'Liked Songs'},
+        {name: 'Микс дня #5'},
         {name: 'Топ-50 (Россия)'},
         {name: 'Bandana 1'},
-        {name: 'Микс дня #5'},
       ]
     }
   },
@@ -55,7 +57,7 @@ export default {
   flex-direction: column;
   width: 100%;
   height: 970px;
-  background: linear-gradient(#20125d 0%, #121212 35%);
+  background: linear-gradient(#211260 0%, #121212 35%);
 }
 
 .current-greetings {

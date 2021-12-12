@@ -1,6 +1,6 @@
 # spotify
 
-#Hello everyone
+## Hello everyone
 ```
 This is my project where I learn Vue.js and API
 ```

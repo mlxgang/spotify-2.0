@@ -1,13 +1,15 @@
 <template>
   <div class="playlist">
-    <div class="playlist-photo"></div>
+    <div class="playlist-photo">
+      <slot/>
+    </div>
     <div class="playlist-title">
       <span class="playlist-name">
         {{ playlist.name }}
       </span>
       <button class="playlist-play-button">
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g id="Group 1"><circle id="Ellipse 1" cx="20" cy="20" r="20" fill="#1BB953"/><path id="Polygon 1" d="M28 20L16 26.9282L16 13.0718L28 20Z" fill="white"/></g>
+        <g><circle cx="20" cy="20" r="20" fill="#1BB953"/><path d="M28 20L16 26.9282L16 13.0718L28 20Z" fill="white"/></g>
       </svg>
       </button>
     </div>
@@ -26,7 +28,7 @@ export default {
 .playlist {
   display: flex;
 
-  background-color: #303030;
+  background-color: rgba(52, 51, 51, 0.5);
   height: 80px;
   width: 320px;
   border-radius: 5px;
@@ -34,7 +36,7 @@ export default {
 }
 
 .playlist:hover {
-  background-color: #484849;
+  background-color: rgba(94, 94, 95, 0.5);
   transition: background-color .3s;
 }
 
