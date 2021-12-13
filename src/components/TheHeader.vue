@@ -39,6 +39,9 @@ header {
   gap: 20px;
   padding-top: 15px;
   padding-left: 30px;
+  position: fixed;
+  /*margin-left: 244px;*/
+  width: calc(100% - 544px);
 }
 
 .arrow-icon {

@@ -1,17 +1,18 @@
 <template>
   <div class="background">
     <the-header/>
+    <div class="content">
     <span class="current-greetings">
       {{ greeting }}
     </span>
-    <div id="last-playlists">
-      <base-playlist :playlist="{name: 'Любимые песни'}">
-        <img src="../assets/liked-songs.png">
-      </base-playlist>
-      <base-playlist v-for="(playlist, index) in playlists" :key="index" :playlist="playlist"/>
+      <div id="last-playlists">
+        <base-playlist :playlist="{name: 'Любимые песни'}">
+          <img src="../assets/liked-songs.png" height="80" width="80">
+        </base-playlist>
+        <base-playlist v-for="(playlist, index) in playlists" :key="index" :playlist="playlist"/>
+      </div>
     </div>
   </div>
-
 </template>
 
 <script>
@@ -55,15 +56,39 @@ export default {
 .background {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 970px;
-  background: linear-gradient(#211260 0%, #121212 35%);
+  width: calc(100% - 514px);
+  height: 100%;
+
+  background: linear-gradient(#211260 0%, #121212 20%);
+  margin-left: 244px;
 }
+
+.content {
+  margin-top: 50px;
+  padding-top: 45px;
+  height: 1000px;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: blue orange;
+}
+
+/*.content::-webkit-scrollbar {*/
+/*  width: 12px;*/
+/*  background: none;*/
+/*}*/
+
+/*.content::-webkit-scrollbar-thumb {*/
+/*  color: rgba(255, 255, 255, 0.3);*/
+/*}*/
+
+/*.background::-webkit-scrollbar {*/
+/*  display: block;*/
+/*}*/
 
 .current-greetings {
   font-size: 28px;
   color: #fff;
-  margin-top: 45px;
+  /*margin-top: 45px;*/
   margin-left: 30px;
   margin-right: auto;
 }

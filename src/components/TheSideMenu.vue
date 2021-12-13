@@ -1,8 +1,8 @@
 <template>
   <div id="side-menu">
-    <div class="side-menu-button">
+    <button class="side-menu-button">
       <base-icon class="side-icon" name="dots"/>
-    </div>
+    </button>
     <div class="side-main-menu">
       <router-link active-class="active" class="side-menu-button" to="/main">
         <svg class="side-icon" fill="currentColor" height="21" viewBox="0 0 25 25" width="21"
@@ -68,10 +68,11 @@ export default {
 
 <style scoped>
 #side-menu {
-  width: auto;
-  height: 908px;
+  width: 220px;
+  height: 100%;
   background-color: #030303;
   padding: 10px 12px 12px;
+  position: fixed;
 }
 
 .side-menu-button {

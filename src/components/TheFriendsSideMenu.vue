@@ -12,9 +12,10 @@ export default {
 
 <style scoped>
 #side-friends-menu {
-  width: 370px;
-  height: 958px;
+  width: 270px;
+  height: 100%;
   background-color: #030303;
-  /*padding: 50px 12px 12px;*/
+  position: fixed;
+  right: 0;
 }
 </style>
