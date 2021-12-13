@@ -7,6 +7,7 @@ import TheMediaPlaylists from "../views/TheMediaPlaylists";
 import TheMediaPodcasts from "../views/TheMediaPodcasts";
 import TheMediaSongwriters from "../views/TheMediaSongwriters";
 import TheMediaAlbums from "../views/TheMediaAlbums";
+// import TheNotFound from "../views/TheNotFound";
 
 export const router = createRouter({
     history: createWebHistory(),
@@ -16,10 +17,11 @@ export const router = createRouter({
             redirect: 'main',
             component: MainLayout,
             children: [
-                {path: 'main', component: TheMainComponent,},
-                {path: 'search', component: TheSearchComponent,},
+                {path: 'main', name: 'main', component: TheMainComponent,},
+                {path: 'search', name: 'search', component: TheSearchComponent,},
                 {
                     path: 'my-media',
+                    name: 'my-media',
                     redirect: '/my-media/playlists',
                     component: TheMediaComponent,
                     children: [
@@ -31,5 +33,10 @@ export const router = createRouter({
                 }
             ],
         },
+        // {
+        //     path: '/:pathMatch(.*)*',
+        //     name: 'NotFound',
+        //     component: TheNotFound
+        // },
     ],
 })

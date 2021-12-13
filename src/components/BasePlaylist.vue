@@ -36,7 +36,7 @@ export default {
 }
 
 .playlist:hover {
-  background-color: rgba(94, 94, 95, 0.5);
+  background-color: rgba(88, 88, 89, 0.5);
   transition: background-color .3s;
 }
 
