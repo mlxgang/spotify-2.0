@@ -1,16 +1,16 @@
 <template>
-  <header>
+  <div :style="{background: gradientColor + headerOpacity + ')'}" class="header-background">
     <button @click="$router.go(-1)">
       <BaseIcon class="arrow-icon" name="arrowLeft"/>
     </button>
-    <button @click="$router.go(1)" disabled>
+    <button disabled @click="$router.go(1)">
       <BaseIcon class="arrow-icon disabled" name="arrowRight"/>
     </button>
-    <div>
+    <div color="white">
       <slot/>
     </div>
     <the-header-account/>
-  </header>
+  </div>
 </template>
 
 <script>
@@ -24,24 +24,33 @@ export default {
     BaseIcon
   },
   data() {
-    return {
-
-    }
+    return {}
   },
+  computed: {
+  },
+  props: {
+    gradientColor: {
+      type: String, required: true
+    },
+    headerOpacity: {
+      type: Number, required: true
+    },
+  }
 }
 </script>
 
 <style scoped>
-header {
+.header-background {
   display: grid;
   align-items: center;
   grid-template-columns: 32px 32px auto 160px;
   gap: 20px;
   padding-top: 15px;
+  padding-bottom: 15px;
   padding-left: 30px;
   position: fixed;
-  /*margin-left: 244px;*/
   width: calc(100% - 544px);
+  background: #000;
 }
 
 .arrow-icon {

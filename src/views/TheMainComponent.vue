@@ -1,15 +1,15 @@
 <template>
-  <div class="background">
-    <the-header/>
+  <div :style="{background: 'linear-gradient(' + gradientColor + '100) 0%, #121212 20%)'}" class="background">
+    <the-header :headerOpacity="headerOpacity" :gradientColor="gradientColor"/>
     <div class="content">
     <span class="current-greetings">
       {{ greeting }}
     </span>
       <div id="last-playlists">
-        <base-playlist :playlist="{name: 'Любимые песни'}">
-          <img src="../assets/liked-songs.png" height="80" width="80">
+        <base-playlist :playlist="{name: 'Любимые песни'}" @mouseover="this.gradientColor = 'rgba(33, 18, 96, '">
+          <img height="80" src="../assets/liked-songs.png" width="80">
         </base-playlist>
-        <base-playlist v-for="(playlist, index) in playlists" :key="index" :playlist="playlist"/>
+        <base-playlist v-for="(playlist, index) in playlists" :key="index" :playlist="playlist" @mouseover="this.gradientColor = 'rgba(255, 11, 11, '" />
       </div>
     </div>
   </div>
@@ -23,10 +23,13 @@ export default {
   name: 'TheMainComponent',
   components: {
     TheHeader,
-    BasePlaylist
+    BasePlaylist,
   },
   data() {
     return {
+      currentScroll: 0,
+      headerOpacity: 0,
+      gradientColor: 'rgba(33, 18, 96, ',
       playlists: [
         {name: 'Микс дня #1'},
         {name: 'Микс дня #2'},
@@ -36,6 +39,18 @@ export default {
         {name: 'Топ-50 (Россия)'},
         {name: 'Bandana 1'},
       ]
+    }
+  },
+  mounted() {
+    window.addEventListener('scroll', this.onScroll)
+  },
+  beforeUnmount() {
+    window.removeEventListener('scroll', this.onScroll)
+  },
+  methods: {
+    onScroll() {
+      this.currentScroll = window.pageYOffset
+      this.headerOpacity = this.currentScroll / 125
     }
   },
   computed: {
@@ -58,9 +73,9 @@ export default {
   flex-direction: column;
   width: calc(100% - 514px);
   height: 100%;
-
-  background: linear-gradient(#211260 0%, #121212 20%);
   margin-left: 244px;
+
+  /*background: linear-gradient(rgba(33, 18, 96, 100) 0%, #121212 20%);*/
 }
 
 .content {

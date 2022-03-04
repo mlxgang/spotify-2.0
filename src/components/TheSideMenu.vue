@@ -21,7 +21,7 @@
       </router-link>
     </div>
     <div class="side-second-menu">
-      <router-link active-class="active" class="side-menu-button" to="/my-media">
+      <router-link active-class="active" class="side-menu-button" to="/">
         <svg class="side-icon" fill="currentColor" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg">
           <path clip-rule="evenodd"
                 d="M2 0a2 2 0 00-2 2v21a2 2 0 002 2h21a2 2 0 002-2V2a2 2 0 00-2-2H2zm11 7v4h4v2h-4v4h-2v-4H7v-2h4V7h2z"
@@ -29,7 +29,7 @@
         </svg>
         <span>Создать плейлист</span>
       </router-link>
-      <router-link active-class="active" class="side-menu-button" to="/my-media">
+      <router-link active-class="active" class="side-menu-button" to="/">
         <svg class="side-icon" fill="none" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg">
           <rect fill="url(#paint0_linear_1_97)" height="25" rx="2" width="25"/>
           <path

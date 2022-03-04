@@ -49,13 +49,15 @@ export default {
 .background {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: calc(100% - 514px);
   height: 1000px;
+  margin-left: 244px;
+
   background-color: #121212;
 }
 
 .button-box {
-  margin-top: 10px;
+  /*margin-top: 10px;*/
   margin-left: 14px;
 }
 

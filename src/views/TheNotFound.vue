@@ -12,14 +12,18 @@ export default {
 </script>
 
 <style scoped>
+h1 {
+  margin-bottom: 10px;
+}
 .error-404 {
   background: #121212;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 1000px;
+  width: calc(100% - 514px);
   height: 1000px;
   color: #fff;
+  margin-left: 244px;
 }
 </style>

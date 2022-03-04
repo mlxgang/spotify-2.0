@@ -6,9 +6,13 @@
         <input class="search-input" placeholder="Исполнитель, трек или подкаст">
       </div>
     </the-header>
-    <span class="title">
-      История поиска
-    </span>
+
+    <div class="content">
+      <span class="title">
+        История поиска
+      </span>
+    </div>
+
   </div>
 </template>
 
@@ -29,9 +33,15 @@ export default {
 .background {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: calc(100% - 514px);
   height: 1000px;
+  margin-left: 244px;
+
   background-color: #121212;
+}
+.content {
+  margin-top: 95px;
+
 }
 
 .search-box {
