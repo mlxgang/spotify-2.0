@@ -1,26 +1,46 @@
 <template>
-  <div class="playlist">
-    <div class="playlist-photo">
-      <slot/>
-    </div>
-    <div class="playlist-title">
+  <router-link :to="`/playlist/${playlist.img}`">
+    <div class="playlist" @mouseover="setGradientColor" @mouseleave="resetGradientColor">
+      <img :alt="playlist.img" class="playlist-photo" :src="require(`../assets/covers/${playlist.img}.jpg`)">
+      <div class="playlist-title">
       <span class="playlist-name">
-        {{ playlist.name }}
+        {{ playlist.title }}
       </span>
-      <button class="playlist-play-button">
-        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g><circle cx="20" cy="20" r="20" fill="#1BB953"/><path d="M28 20L16 26.9282L16 13.0718L28 20Z" fill="white"/></g>
-      </svg>
-      </button>
+        <button class="playlist-play-button">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g>
+              <circle cx="20" cy="20" r="20" fill="#1BB953"/>
+              <path d="M28 20L16 26.9282L16 13.0718L28 20Z" fill="white"/>
+            </g>
+          </svg>
+        </button>
+      </div>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
 export default {
   name: 'BasePlaylist',
-  components: {},
-  props: ['playlist']
+  methods: {
+    setGradientColor() {
+      this.$emit('setGradientColor', this.index)
+    },
+    resetGradientColor() {
+      this.$emit('resetGradientColor')
+    }
+  },
+  props: {
+    playlist: {
+      type: Object,
+      required: true
+    },
+    index: {
+      type: Number,
+      required: true
+    }
+  },
+  emits: ['setGradientColor', 'resetGradientColor']
 }
 </script>
 
@@ -30,7 +50,8 @@ export default {
 
   background-color: rgba(52, 51, 51, 0.5);
   height: 80px;
-  width: 320px;
+  /*width: 320px;*/
+  width: 389px;
   border-radius: 5px;
   transition: background-color .3s;
 }
@@ -49,13 +70,12 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 240px;
+  width: 100%;
 }
 
 .playlist-photo {
   height: 80px;
   width: 80px;
-  background-color: #ff0b0b;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
@@ -63,6 +83,7 @@ export default {
 .playlist-name {
   padding-left: 15px;
   color: #ffffff;
+  /*margin-right: auto;*/
 }
 
 .playlist-play-button {

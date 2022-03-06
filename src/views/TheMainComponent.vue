@@ -1,15 +1,19 @@
 <template>
-  <div :style="{background: 'linear-gradient(' + gradientColor + '100) 0%, #121212 20%)'}" class="background">
+  <div :style="{background: 'linear-gradient('+ gradientColor + ' 0%, #121212 20%)' }" class="background">
     <the-header :headerOpacity="headerOpacity" :gradientColor="gradientColor"/>
     <div class="content">
     <span class="current-greetings">
       {{ greeting }}
     </span>
       <div id="last-playlists">
-        <base-playlist :playlist="{name: 'Любимые песни'}" @mouseover="this.gradientColor = 'rgba(33, 18, 96, '">
-          <img height="80" src="../assets/liked-songs.png" width="80">
-        </base-playlist>
-        <base-playlist v-for="(playlist, index) in playlists" :key="index" :playlist="playlist" @mouseover="this.gradientColor = 'rgba(255, 11, 11, '" />
+        <base-playlist
+            v-for="(playlist, index) in playlists"
+            :key="index"
+            :index="index"
+            :playlist="playlist"
+            @setGradientColor="onSetGradientColor"
+            @resetGradientColor="onResetGradientColor"
+        />
       </div>
     </div>
   </div>
@@ -18,6 +22,10 @@
 <script>
 import BasePlaylist from '../components/BasePlaylist.vue';
 import TheHeader from '../components/TheHeader';
+import {playlists} from '../assets/playlists';
+import ColorThief from 'colorthief';
+
+const colorThief = new ColorThief();
 
 export default {
   name: 'TheMainComponent',
@@ -27,31 +35,27 @@ export default {
   },
   data() {
     return {
-      currentScroll: 0,
-      headerOpacity: 0,
-      gradientColor: 'rgba(33, 18, 96, ',
-      playlists: [
-        {name: 'Микс дня #1'},
-        {name: 'Микс дня #2'},
-        {name: 'Микс дня #3'},
-        {name: 'Микс дня #4'},
-        {name: 'Микс дня #5'},
-        {name: 'Топ-50 (Россия)'},
-        {name: 'Bandana 1'},
-      ]
+      gradientColorDefault: '',
+      gradientColor: 'rgb(33, 18, 96)',
+      playlists,
+    }
+  },
+  methods: {
+    setGradientColorDefault() {
+      let allImgs = document.getElementsByTagName('img')
+      this.gradientColorDefault = `rgb(${colorThief.getColor(allImgs[0]).join(' ')})`
+    },
+    onSetGradientColor(index) {
+      let allImgs = document.getElementsByTagName('img')
+      this.gradientColor = `rgb(${colorThief.getColor(allImgs[index]).join(' ')})`
+    },
+    onResetGradientColor() {
+      this.gradientColor = this.gradientColorDefault
     }
   },
   mounted() {
-    window.addEventListener('scroll', this.onScroll)
-  },
-  beforeUnmount() {
-    window.removeEventListener('scroll', this.onScroll)
-  },
-  methods: {
-    onScroll() {
-      this.currentScroll = window.pageYOffset
-      this.headerOpacity = this.currentScroll / 125
-    }
+    this.setGradientColorDefault();
+    this.gradientColor = this.gradientColorDefault
   },
   computed: {
     greeting() {
@@ -63,7 +67,14 @@ export default {
                   (hour < 22) ? 'Добрый вечер' :
                       (hour < 24) ? 'Доброй ночи' : 'ау?'
     }
-  }
+  },
+  props: {
+    headerOpacity: {
+      type: Number,
+      required: true,
+    }
+  },
+  emits: ['setGradientColor', 'resetGradientColor']
 }
 </script>
 
@@ -71,10 +82,10 @@ export default {
 .background {
   display: flex;
   flex-direction: column;
-  width: calc(100% - 514px);
+  width: 100%;
+  /*width: calc(100% - 514px);*/
   height: 100%;
   margin-left: 244px;
-
   /*background: linear-gradient(rgba(33, 18, 96, 100) 0%, #121212 20%);*/
 }
 
@@ -82,23 +93,7 @@ export default {
   margin-top: 50px;
   padding-top: 45px;
   height: 1000px;
-  overflow-y: scroll;
-  scrollbar-width: thin;
-  scrollbar-color: blue orange;
 }
-
-/*.content::-webkit-scrollbar {*/
-/*  width: 12px;*/
-/*  background: none;*/
-/*}*/
-
-/*.content::-webkit-scrollbar-thumb {*/
-/*  color: rgba(255, 255, 255, 0.3);*/
-/*}*/
-
-/*.background::-webkit-scrollbar {*/
-/*  display: block;*/
-/*}*/
 
 .current-greetings {
   font-size: 28px;
@@ -110,11 +105,13 @@ export default {
 
 #last-playlists {
   display: grid;
-  grid-template-columns: 320px 320px 320px 320px;
+  /*grid-template-columns: 320px 320px 320px 320px;*/
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 80px 80px;
   gap: 20px;
 
   margin-top: 25px;
   margin-left: 30px;
+  margin-right: 30px;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="background">
-    <the-header>
+    <the-header :headerOpacity="headerOpacity">
       <div class="button-box">
         <router-link to="/my-media/playlists" class="button-media-tab" active-class="active">
           <span>Плейлисты</span>
@@ -41,7 +41,12 @@ export default {
       currentTab: tabs[0]
     }
   },
-  methods: {}
+  methods: {},
+  props: {
+    headerOpacity: {
+      type: Number, default: 0, required: true
+    }
+  },
 }
 </script>
 

@@ -1,6 +1,6 @@
 <template>
   <div class="background">
-    <the-header>
+    <the-header :headerOpacity="headerOpacity">
       <div class="search-box">
         <base-icon class="search-icon" name="search"/>
         <input class="search-input" placeholder="Исполнитель, трек или подкаст">
@@ -26,6 +26,11 @@ export default {
     TheHeader,
     BaseIcon,
   },
+  props: {
+    headerOpacity: {
+      type: Number, default: 0, required: true
+    }
+  }
 }
 </script>
 
@@ -39,9 +44,9 @@ export default {
 
   background-color: #121212;
 }
+
 .content {
   margin-top: 95px;
-
 }
 
 .search-box {

@@ -4,7 +4,7 @@
       <base-icon class="side-icon" name="dots"/>
     </button>
     <div class="side-main-menu">
-      <router-link active-class="active" class="side-menu-button" to="/main">
+      <router-link active-class="active" class="side-menu-button" to="/">
         <svg class="side-icon" fill="currentColor" height="21" viewBox="0 0 25 25" width="21"
              xmlns="http://www.w3.org/2000/svg">
           <path clip-rule="evenodd" d="M25 7L12 0 0 7v18h10v-8h5v8h10V7z" fill-rule="evenodd"/>
@@ -41,7 +41,7 @@
           <path d="M8.772 13.375L12.5 9.751l3.728 3.624L12.5 17l-3.728-3.625z" fill="#fff"/>
           <defs>
             <linearGradient id="paint0_linear_1_97" gradientUnits="userSpaceOnUse" x1="0" x2="25" y1="0" y2="25">
-              <stop stop-color="#4203F4"/>
+              <stop stop-color="#4203F4" offset="1"/>
               <stop offset="1" stop-color="#C0ECD6"/>
             </linearGradient>
           </defs>

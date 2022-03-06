@@ -6,12 +6,13 @@ import TheMediaPlaylists from "../views/TheMediaPlaylists";
 import TheMediaPodcasts from "../views/TheMediaPodcasts";
 import TheMediaSongwriters from "../views/TheMediaSongwriters";
 import TheMediaAlbums from "../views/TheMediaAlbums";
+import ThePlaylist from '../views/ThePlaylist'
 import TheNotFound from "../views/TheNotFound";
 
 export const router = createRouter({
     history: createWebHistory(),
     routes: [
-        {path: '/main', name: 'main', component: TheMainComponent},
+        {path: '', name: 'main', component: TheMainComponent},
         {path: '/search', name: 'search', component: TheSearchComponent},
         {path: '/my-media', name: 'my-media', component: TheMediaComponent, redirect: '/my-media/playlists',
             children: [
@@ -21,6 +22,7 @@ export const router = createRouter({
                 {path: 'albums', component: TheMediaAlbums},
             ]
         },
+        {path: '/playlist/:id', component: ThePlaylist},
         {path: '/:pathMatch(.*)*', name: 'NotFound', component: TheNotFound},
     ]
 })
